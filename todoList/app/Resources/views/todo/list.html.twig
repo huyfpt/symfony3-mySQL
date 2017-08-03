@@ -1,0 +1,30 @@
+
+{% extends 'base.html.twig' %}
+{% block body %}
+</br>	
+	<h2 class="page">Page Lasted</h2>
+  <table class="table table-bordered"> 
+    <thead>
+      <tr> 
+        <th>#</th> 
+        <th style="text-align: center;">Todo</th>
+        <th style="text-align: center;">Due Day</th> 
+        <th style="width: 319px;"></th>
+      </tr> 
+    </thead>
+    <tbody>
+    {% for list in todo %}
+      <tr>
+        <th scope="row">{{list.id}}</th>
+        <td style="text-align: center;">{{list.name}}</td>
+        <td style="text-align: center;">{{list.deuDate| date('F j, Y, g:i a')}}</td>
+        <td><a style="margin: 0px 7px auto 6px;" class="btn btn-info" href="/todos/details/{{list.id}}">Details</>
+        	<a style="margin: 0px 7px auto 6px;" class="btn btn-primary" href="/todos/edit/{{list.id}}">Update</>
+        	<a style="margin: 0px 7px auto 6px;" class="btn btn-danger" href="/todos/delete/{{list.id}}">Delete</>
+        </td>
+      </tr> 
+      {% endfor %}
+       </tbody>
+      
+  </table>
+{% endblock %}

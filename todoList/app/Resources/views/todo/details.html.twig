@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h2 class="page">Show Details Todo</h2>
+ <a class="btn btn-default" href="/todos">Back list</a>
+ 	<h2 class="page">{{showdetail.name}}</h2>
+ 	<ul class="list-group">
+ 		<li class="list-group-item">Category: {{showdetail.category}} </li>
+ 		<li class="list-group-item">Due: {{showdetail.deuDate| date('F j, Y, g:i a')}} </li>
+ 		<li class="list-group-item">Day Created: {{showdetail.createDate| date('F j, Y, g:i a')}} </li>
+ 	</ul>
+ 	{{showdetail.description}}
+{% endblock %}
