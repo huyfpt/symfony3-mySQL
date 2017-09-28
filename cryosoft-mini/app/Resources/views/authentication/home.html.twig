@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -18,114 +17,126 @@
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#" data-toggle="modal" data-target="#change">Change Password</a></li>
-                                    <li><a href="#" data-toggle="modal" data-target="#upinfo">Update-info</a></li>
-                                    <li><a href="#">Export the report</a></li>
-                                </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">English</a></li>
-                            <li><a href="#">Vietnamese</a></li>
-                        </ul>
-                    </li>
+                    {% if app.user != null %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mange user</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" data-toggle="modal" data-target="#change">Change Password</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#upinfo">Update-info</a></li>
+                                <li><a href="#">Export the report</a></li>
+                                <li><a href="/logout">Sign out</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li><a href="/login">Login</a></li>
+                    {% endif %}
                 </ul>
-            </div><!--/.nav-collapse -->
+            </div>
+            <!--/.nav-collapse -->
         </div>
     </nav>
-
-    <div class="container">
-<br/><br/><br/><br/>
-        <div class="starter-template">
-            <h1>Cryosoft Mini</h1>
-            <p class="lead">Hello Mr/Mis: </p>
-        </div>
-        <table border="1" width="1200px">
-            <tr>
-                <th style="text-align: center">Name Study</th>
-                <th style="text-align: center">Calculater mode</th>
-                <th style="text-align: center">Option economic</th>
-                <th style="text-align: center">Option Cryogen</th>
-                <th style="text-align: center">Option Perform</th>
-                <th style="text-align: center">Option Add enable</th>
-            </tr>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </table><br/><br/>
-        <a href="#">New Study</a>
-    </div><!-- /.container -->
-
-<form>
-    <div class="modal fade" id="change" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title" style="text-align: center">Change password</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body" style="text-align: center">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label>Old Password</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" name="_oldPass">
+    <form action="/change" method="post">
+        <div class="modal fade" id="change" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title" style="text-align: center">Change password</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body" style="text-align: center">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Old Password</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="text" name="_oldPass">
+                                        </div>
                                     </div>
                                 </div>
-                            </div><br/><br/>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label> New Password</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="password" name="_newPass">
+                                <br/>
+                                <br/>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label> New Password</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="password" name="_newPass">
+                                        </div>
                                     </div>
                                 </div>
-                            </div><br/><br/>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label>Confirm password</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="password" name="_confirmPass">
+                                <br/>
+                                <br/>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Confirm password</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="password" name="_confirmPass">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div><br/>
-                        <!-- /.box-body -->
-                        <!-- box-footer -->
+                            <br/>
+                            <!-- /.box-body -->
+                            <!-- box-footer -->
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" id="confirm" class="btn btn-info" >Confirm</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div class="modal-footer">
+                        <button type="submit" id="confirmChange" class="btn btn-info">Confirm</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
 
+    <form action="/home" id="form-home" method="post">
 
-    <form>
+        <div class="container">
+            {% if app.user != null %}
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <div class="starter-template">
+                    <h1>Cryosoft Mini</h1>
+                    <p class="lead">Hello Mr/Mis: <span style="color: red">{{ app.user.username }}</span> </p>
+                </div>
+                <table border="1" width="1200px">
+                    <tr>
+                        <th style="text-align: center">Name Study</th>
+                        <th style="text-align: center">Calculater mode</th>
+                        <th style="text-align: center">Option economic</th>
+                        <th style="text-align: center">Option Cryogen</th>
+                        <th style="text-align: center">Option Perform</th>
+                        <th style="text-align: center">Option Add enable</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </table>
+                <br/>
+                <br/>
+                <a href="/new">New Study</a> {% endif %}
+        </div>
+        <!-- /.container -->
+
+    </form>
+    <form action="/updateInfo" method="post">
         <div class="modal fade" id="upinfo" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -146,23 +157,65 @@
                                             <label>Change username</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input class="form-control" type="text" name="changeuser">
+                                            <input class="form-control" type="text" value="{{ username }}" name="changeuser">
                                         </div>
                                     </div>
-                                </div><br/><br/>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Change Language</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select name="changeLang">
+                                                {% for language in lang %}
+                                                <option value="{{ language.id }}" {{ valuesLang == language.id ? 'selected' : '' }}>{{ lang_list[language.name] }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Change monney</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select name="changeMon">
+                                                {% for monetary in money %}
+                                                    <option value="{{ monetary.id }}" {{ valuesMon == monetary.id ? 'selected' : '' }}>{{ monetary.name }} {{ monetary.unit }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
 
-                            </div><br/>
+                            </div>
+                            <br/>
                             <!-- /.box-body -->
                             <!-- box-footer -->
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" id="confirm" class="btn btn-info" >Confirm</button>
+                        <button type="submit" id="changeInfo" class="btn btn-info">Confirm</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-
+    <script>
+        $('#confirmChange').click(function() {
+            //change action for form
+            $("#form-home").attr("action", "/change");
+            //form.submit
+            document.getElementById("#form-home").submit();
+        });
+        $('#changeInfo').click(function() {
+            //change action for form
+            $("#form-home").attr("action", "/updateInfo");
+            //form.submit
+            document.getElementById("#form-home").submit();
+        });
+    </script>
 {% endblock %}

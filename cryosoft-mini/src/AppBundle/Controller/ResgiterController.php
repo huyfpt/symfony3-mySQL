@@ -1,5 +1,7 @@
 <?php
 namespace AppBundle\Controller;
+use AppBundle\Entity\Langauge;
+use AppBundle\Entity\Money;
 use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -29,7 +31,11 @@ class ResgiterController extends Controller
                 $encoder = $this->get('security.password_encoder');
                 $password_encoder = $encoder->encodePassword($user, $user->getPassword());
                 $user->setPassword($password_encoder);
-
+                $lang = $this->getDoctrine()->getRepository(Langauge::class)->find(1);
+                $money= $this->getDoctrine()->getRepository(Money::class)->find(1);
+                $user->setIdLanguage($lang);
+                $user->setIdMonytary($money);
+                $user->setUserrole(0);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();

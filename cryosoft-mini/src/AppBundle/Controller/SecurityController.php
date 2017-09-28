@@ -32,4 +32,10 @@ class SecurityController extends Controller
     public function logoutAction()
     {
     }
+    /**
+     * @Route("/", name="redirect-login")
+     */
+    public function redirectAction(){
+        return $this->redirectToRoute('login');
+    }
 }
