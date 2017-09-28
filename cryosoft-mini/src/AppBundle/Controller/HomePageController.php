@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Langauge;
 use AppBundle\Entity\Money;
+use AppBundle\Entity\Studies;
 use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -25,6 +26,8 @@ class HomePageController extends Controller
         $user = $this->getUser();
         $userList= $this->getDoctrine()->getRepository(User::class);
         $rs = $userList->findBy(array('id'=>$user->getId()));
+        $studyList = $this->getDoctrine()->getRepository(Studies::class);
+        $stuls = $studyList->findBy(array('idUser'=>$user->getId()));
         $lang = $this->getDoctrine()->getRepository(Langauge::class)->findAll();
         $money = $this->getDoctrine()->getRepository(Money::class)->findAll();
         $language_list = array(
@@ -38,7 +41,8 @@ class HomePageController extends Controller
             'valuesMon'=>$rs[0]->getIdMonytary()->getId(),
             'lang' =>$lang,
             'money'=>$money,
-            'lang_list' => $language_list
+            'lang_list' => $language_list,
+            'studyList' =>$stuls
         ]);
     }
 

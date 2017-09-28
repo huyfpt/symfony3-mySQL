@@ -120,14 +120,16 @@
                         <th style="text-align: center">Option Perform</th>
                         <th style="text-align: center">Option Add enable</th>
                     </tr>
+                    {% for stuls in studyList %}
                     <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th style="text-align: center">{{ stuls.name }}</th>
+                        <th style="text-align: center">{{ stuls.calculatemode }}</th>
+                        <th style="text-align: center">{{ stuls.opeconomic }}</th>
+                        <th style="text-align: center">{{ stuls.opcryogen }}</th>
+                        <th style="text-align: center">{{ stuls.opperform }}</th>
+                        <th style="text-align: center">{{ stuls.opallow }}</th>
                     </tr>
+                    {% endfor %}
                 </table>
                 <br/>
                 <br/>

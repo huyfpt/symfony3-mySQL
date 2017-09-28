@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Definition</a></li>
+                    <li><a href="#product">Product Charateristic</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <br/><br/><br/><br/>
+    <ul class="nav nav-tabs" id="tabContent">
+        <li ><a href="/new" >New</a></li>
+        <li class="active"><a id="linkDefine" href="/open">Open</a></li>
+        <li><a id="linkDefine" href="/import">Import</a></li>
+    </ul><br/><br/>
+    <div class="tab-content">
+        <div class="tab-pane active" >
+            <div class="box">
+                <form action="/open" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label> Study name</label>
+                            <select id="nameStudy" class="form-control">
+                                {% for list in list %}
+                                <option value="{{ list.id }}">{{ list.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <label>Comment</label>
+                            <textarea class="form-control" name="comment"></textarea>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Calculate mode</label>
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="cal" value="0"> Estimation
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="cal" value="1"> Optimum
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="cal" value="2"> Selected
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Option</label>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" name="economic" value="1"> Economic
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" name="cryogen" value="2"> Cryogen
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" name="perform" value="3"> Perform
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" name="hasChild" value="4"> Add Allow
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: center">
+                        <button type="submit" class="btn btn-info">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -38,7 +38,7 @@ class Studies
     /**
      * @return bool
      */
-    public function isCalculatemode()
+    public function getCalculatemode()
     {
         return $this->calculatemode;
     }
@@ -54,7 +54,7 @@ class Studies
     /**
      * @return bool
      */
-    public function isOpeconomic()
+    public function getOpeconomic()
     {
         return $this->opeconomic;
     }
@@ -70,7 +70,7 @@ class Studies
     /**
      * @return bool
      */
-    public function isOpcryogen()
+    public function getOpcryogen()
     {
         return $this->opcryogen;
     }
@@ -86,7 +86,7 @@ class Studies
     /**
      * @return bool
      */
-    public function isOpperform()
+    public function getOpperform()
     {
         return $this->opperform;
     }
@@ -102,7 +102,7 @@ class Studies
     /**
      * @return bool
      */
-    public function isOpallow()
+    public function getOpallow()
     {
         return $this->opallow;
     }
@@ -360,7 +360,7 @@ class Studies
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Product")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="proid", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="proid", referencedColumnName="id", nullable=true)
      * })
      */
     private $proid;
