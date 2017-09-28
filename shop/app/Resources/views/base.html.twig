@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+
+        {% block body %}
+            {% for flash_massage in app.session.flashbag.get('Noitce') %}
+                <span style="color:red";><strong>{{flash_massage}}</strong></span>
+            {% endfor %}
+        {% endblock %}
+        {% block javascripts %}
+            <script type="text/javascript">
+
+                function getProduct(val) {
+
+                    var ajaxUrl = "/load";
+                    $.ajax({
+                        type: "POST",
+                        url: ajaxUrl,
+                        data:'product_id='+val,
+                        success: function(data){
+                            $("#detail").html(data);
+                        }
+                    });
+                }
+            </script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        {% endblock %}
+    </body>
+</html>

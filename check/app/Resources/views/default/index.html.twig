@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Show list</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th style="text-align: center;">Todo</th>
+        <th style="text-align: center;">cate</th>
+        <th style="text-align: center;">Details</th>
+        <th style="text-align: center;">Due Day</th>
+        <th style="width: 319px;">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {%  for list in details %}
+    <tr>
+        <th>{{ list.id }}</th>
+        <th>{{ list.name }}</th>
+        <th>{{ list.category }}</th>
+        <th>{{ list.description }}</th>
+        <th>{{ list.deuDate|date("m-d-Y")}}</th>
+        <td>
+            <a style="margin: 0px 7px auto 6px;" class="btn btn-primary" href="/edit/{{list.id}}">Update <a/>
+            <a style="margin: 0px 7px auto 6px;" class="btn btn-danger" href="/delete/{{list.id}}">Delete <a/>
+        </td>
+    </tr>
+    {%  endfor %}
+
+    </tbody>
+<a href="/new">Create</a>
+</table>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

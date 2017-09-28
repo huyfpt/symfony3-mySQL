@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Create</h1>
+    <br/>
+    <form class="form-horizontal" role="form" method="POST" action="/new">
+    <label>Name</label>
+<input class="form-control" name="_name"><br/>
+        <label>
+            gym
+            <input type="radio" name="r1" value="0" checked>
+        </label><br/>
+        <label>
+            swimming
+            <input type="radio" name="r1" value="1">
+        </label><br/>
+        <label>Details</label>
+        <select name="_option">
+            <option  value="op1">huy dep trai</option>
+            <option  value="op2">huy cool boy</option>
+            <option  value="op3">huy vl handsome</option>
+        </select>
+    <button class="btn btn-info" type="submit">Create</button>
+    </form>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

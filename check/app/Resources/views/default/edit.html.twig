@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Update</h1>
+    <br/>
+    <form class="form-horizontal" role="form" method="POST" action="/edit/{{ updated }}">
+        <label>Name </label>
+        <input class="form-control" value="{{ user_info }}" name="_name"><br/>
+
+        <label>
+            gym
+            {% if valueCate == 0 %}
+            <input type="radio" name="r1" value="0" checked>
+            {% else %}
+                <input type="radio" name="r1" value="0" >
+            {% endif %}
+        </label><br/>
+        <label>
+            swimming
+        {% if valueCate == 1 %}
+            <input type="radio" name="r1" value="0" checked>
+        {% else %}
+            <input type="radio" name="r1" value="1" >
+        {% endif %}
+        </label><br/>
+        <label>Details</label>
+        <select name="_option">
+            <option  value="op1" {{ valueDes == "op1" ? "selected" : "" }}>huy dep trai</option>
+            <option  value="op2" {{ valueDes == "op2" ? "selected" : "" }}>huy cool boy</option>
+            <option  value="op3" {{ valueDes == "op3" ? "selected" : "" }}>huy vl handsome</option>
+        </select>
+        <button class="btn btn-info" type="submit">Update</button>
+    </form>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

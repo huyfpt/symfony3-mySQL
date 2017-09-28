@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Shape" table="shape">
+    <id name="shapeid" type="integer" column="shapeid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sym1" type="boolean" column="SYM1" nullable="true"/>
+    <field name="sym2" type="boolean" column="SYM2" nullable="true"/>
+    <field name="sym3" type="boolean" column="SYM3" nullable="true"/>
+    <field name="aixsym1" type="boolean" column="AIXSYM1" nullable="true"/>
+    <field name="aixsym2" type="boolean" column="AIXSYM2" nullable="true"/>
+    <field name="aixsym3" type="boolean" column="AIXSYM3" nullable="true"/>
+  </entity>
+</doctrine-mapping>

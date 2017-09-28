@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <form class="form-inline" role="form" method="POST" action="/new">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title" style="text-align: center">New product</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" style="text-align: center">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Product Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" name="_proName">
+                        </div>
+                    </div>
+                </div><br/><br/>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label> Detail</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" name="_details">
+                        </div>
+                    </div>
+                </div><br/><br/>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Category</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select name="_cate">
+                                <option>Select option</option>
+                                {% for listCate in cate %}
+                                    <option value="{{ listCate.cateid }}">{{ listCate.name }}</option>
+                                    {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div><br/><br/>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Status</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Instock
+                                <input type="radio" value="0" name="_status">
+                            </label>
+                            <label>OutStock
+                                <input type="radio" value="1" name="_status">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div><br/>
+            <!-- /.box-body -->
+            <div class="box-footer" style="text-align: center">
+                <div class="form-group">
+                    <button class="btn btn-info btn-flat" type="submit">Create new</button>
+                    <button class="btn btn-danger btn-flat" type="reset">Reset</button>
+                </div>
+            </div>
+            <!-- box-footer -->
+        </div>
+        <!-- /.box -->
+    </form>
+{% endblock %}

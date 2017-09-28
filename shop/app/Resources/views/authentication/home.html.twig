@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Hello Mr/Mis: {{ app.user.username }} </h1>
+    <a href="/logout">Sign out</a>
+    <h2>Show list</h2>
+    <table border="1">
+        <thead>
+        <tr>
+            <th style="text-align: center; width: 300px;">Name</th>
+            <th style="text-align: center; width: 300px;">Detail</th>
+            <th style="text-align: center; width: 300px;">Cate</th>
+            <th style="text-align: center; width: 300px;">Status</th>
+            <th style="text-align: center; width: 300px;">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for rs in result %}
+                <tr>
+                    <th style="text-align:center;">{{ rs.name }}</th>
+                    <th style="text-align:center;">{{ rs.details }}</th>
+                    <th style="text-align:center;">{{ rs.cateid }}</th>
+                    <th style="text-align:center;">{{ rs.status }}</th>
+                    <th><a href="/edit/{{ rs.productid }}">Update</a></th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="/new">Create new product</a>
+        </div>
+        <div class="col-md-3">
+            <a href="/load">Load product</a>
+        </div>
+
+    </div>
+
+    <a href="/change">Change password</a>
+{% endblock %}
