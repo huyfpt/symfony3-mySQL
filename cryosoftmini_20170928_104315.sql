@@ -11,12 +11,6 @@
 -- ---------------------------------------------------------
 
 
--- CREATE DATABASE "cryosoftmini" --------------------------
-CREATE DATABASE IF NOT EXISTS `cryosoftmini` CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `cryosoftmini`;
--- ---------------------------------------------------------
-
-
 -- CREATE TABLE "component" --------------------------------
 -- CREATE TABLE "component" ------------------------------------
 CREATE TABLE `component` ( 
@@ -38,12 +32,13 @@ AUTO_INCREMENT = 1;
 -- CREATE TABLE "langauge" ---------------------------------
 -- CREATE TABLE "langauge" -------------------------------------
 CREATE TABLE `langauge` ( 
-	`id` Int( 255 ) NOT NULL,
+	`id` Int( 255 ) AUTO_INCREMENT NOT NULL,
 	`name` VarChar( 2 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 2;
 -- -------------------------------------------------------------
 -- ---------------------------------------------------------
 
@@ -51,13 +46,14 @@ ENGINE = InnoDB;
 -- CREATE TABLE "money" ------------------------------------
 -- CREATE TABLE "money" ----------------------------------------
 CREATE TABLE `money` ( 
-	`id` Int( 255 ) NOT NULL,
+	`id` Int( 255 ) AUTO_INCREMENT NOT NULL,
 	`name` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	`unit` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 1;
 -- -------------------------------------------------------------
 -- ---------------------------------------------------------
 
@@ -116,7 +112,7 @@ AUTO_INCREMENT = 1;
 -- CREATE TABLE "shape" ------------------------------------
 -- CREATE TABLE "shape" ----------------------------------------
 CREATE TABLE `shape` ( 
-	`id` Int( 255 ) NOT NULL,
+	`id` Int( 255 ) AUTO_INCREMENT NOT NULL,
 	`name` VarChar( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
 	`code` Int( 255 ) NULL,
 	`SYM1` TinyInt( 255 ) NULL,
@@ -128,7 +124,8 @@ CREATE TABLE `shape` (
 	PRIMARY KEY ( `id` ) )
 CHARACTER SET = utf8
 COLLATE = utf8_general_ci
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 1;
 -- -------------------------------------------------------------
 -- ---------------------------------------------------------
 
@@ -183,6 +180,7 @@ AUTO_INCREMENT = 1;
 
 
 -- Dump data of "langauge" ---------------------------------
+INSERT INTO `langauge`(`id`,`name`) VALUES ( '1', 'en' );
 -- ---------------------------------------------------------
 
 
