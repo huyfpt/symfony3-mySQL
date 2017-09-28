@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <form class="form-inline" role="form" method="POST" action="/signup">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title" style="text-align: center">Regsiter</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" style="text-align: center">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>User Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" name="_username" placeholder="Example: huy, thang ....">
+                        </div>
+                    </div>
+                </div><br/><br/>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label> Password</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" type="password" name="_password" placeholder="123">
+                        </div>
+                    </div>
+                </div><br/><br/>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Confirm password</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" type="password" name="_confirm" placeholder="123">
+                        </div>
+                    </div>
+                </div>
+
+            </div><br/>
+            <!-- /.box-body -->
+            <div class="box-footer" style="text-align: center">
+                <div class="form-group">
+                    <button class="btn btn-info btn-flat" type="submit">Sign up</button>
+                </div>
+            </div>
+            <!-- box-footer -->
+        </div>
+        <!-- /.box -->
+    </form>
+{% endblock %}

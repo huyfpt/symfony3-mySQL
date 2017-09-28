@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Product" table="product">
+    <indexes>
+      <index name="lnk_studies_product" columns="id_study"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="proiso" type="boolean" column="proISO" nullable="true"/>
+    <field name="prorealwiegth" type="float" column="proRealWiegth" precision="10" scale="0" nullable="true"/>
+    <field name="provolume" type="float" column="provolume" precision="10" scale="0" nullable="true"/>
+    <field name="proweigth" type="float" column="proWeigth" precision="10" scale="0" nullable="true"/>
+    <field name="idMeshgeneral" type="integer" column="id_meshGeneral" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="idStudy" target-entity="Studies" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_study" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

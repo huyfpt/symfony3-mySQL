@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ProductEmlt" table="product_EMLT">
+    <indexes>
+      <index name="lnk_product_product_EMLT" columns="id_pro"/>
+      <index name="lnk_shape_product_EMLT" columns="id_shape"/>
+      <index name="lnk_component_product_EMLT" columns="id_comp"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="insertLineOrder" type="integer" column="insert_line_order" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="nodeDecim" type="integer" column="node_decim" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="originalThick" type="float" column="original_thick" precision="10" scale="0" nullable="true"/>
+    <field name="proDehyd" type="float" column="Pro_dehyd" precision="10" scale="0" nullable="true"/>
+    <field name="proDehydCost" type="float" column="Pro_dehyd_cost" precision="10" scale="0" nullable="true"/>
+    <field name="proElmtIso" type="boolean" column="pro_elmt_iso" nullable="true"/>
+    <field name="proElmtName" type="string" column="pro_elmt_name" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="proElmtRealwiegth" type="float" column="pro_elmt_realwiegth" precision="10" scale="0" nullable="true"/>
+    <field name="proElmtWiegth" type="float" column="pro_elmt_wiegth" precision="10" scale="0" nullable="true"/>
+    <field name="shapeParam1" type="float" column="shape_param1" precision="10" scale="0" nullable="true"/>
+    <field name="shapeParam2" type="float" column="shape_param2" precision="10" scale="0" nullable="true"/>
+    <field name="shapeParam3" type="float" column="shape_param3" precision="10" scale="0" nullable="true"/>
+    <field name="shapePos1" type="float" column="shape_pos1" precision="10" scale="0" nullable="true"/>
+    <field name="shapePos2" type="float" column="shape_pos2" precision="10" scale="0" nullable="true"/>
+    <field name="shapePos3" type="float" column="shape_pos3" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="idShape" target-entity="Shape" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_shape" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPro" target-entity="Product" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_pro" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idComp" target-entity="Component" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_comp" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

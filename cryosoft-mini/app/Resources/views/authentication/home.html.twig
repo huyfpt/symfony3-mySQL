@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" data-toggle="modal" data-target="#change">Change Password</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#upinfo">Update-info</a></li>
+                                    <li><a href="#">Export the report</a></li>
+                                </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">English</a></li>
+                            <li><a href="#">Vietnamese</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container">
+<br/><br/><br/><br/>
+        <div class="starter-template">
+            <h1>Cryosoft Mini</h1>
+            <p class="lead">Hello Mr/Mis: </p>
+        </div>
+        <table border="1" width="1200px">
+            <tr>
+                <th style="text-align: center">Name Study</th>
+                <th style="text-align: center">Calculater mode</th>
+                <th style="text-align: center">Option economic</th>
+                <th style="text-align: center">Option Cryogen</th>
+                <th style="text-align: center">Option Perform</th>
+                <th style="text-align: center">Option Add enable</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </table><br/><br/>
+        <a href="#">New Study</a>
+    </div><!-- /.container -->
+
+<form>
+    <div class="modal fade" id="change" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title" style="text-align: center">Change password</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="text-align: center">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label>Old Password</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" type="text" name="_oldPass">
+                                    </div>
+                                </div>
+                            </div><br/><br/>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label> New Password</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" type="password" name="_newPass">
+                                    </div>
+                                </div>
+                            </div><br/><br/>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label>Confirm password</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control" type="password" name="_confirmPass">
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br/>
+                        <!-- /.box-body -->
+                        <!-- box-footer -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="confirm" class="btn btn-info" >Confirm</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+    <form>
+        <div class="modal fade" id="upinfo" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title" style="text-align: center">Update info</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body" style="text-align: center">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Change username</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input class="form-control" type="text" name="changeuser">
+                                        </div>
+                                    </div>
+                                </div><br/><br/>
+
+                            </div><br/>
+                            <!-- /.box-body -->
+                            <!-- box-footer -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="confirm" class="btn btn-info" >Confirm</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
