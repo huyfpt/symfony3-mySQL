@@ -27,6 +27,134 @@ class Product
     private $proiso;
 
     /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isProiso()
+    {
+        return $this->proiso;
+    }
+
+    /**
+     * @param bool $proiso
+     */
+    public function setProiso($proiso)
+    {
+        $this->proiso = $proiso;
+    }
+
+    /**
+     * @return float
+     */
+    public function getProrealwiegth()
+    {
+        return $this->prorealwiegth;
+    }
+
+    /**
+     * @param float $prorealwiegth
+     */
+    public function setProrealwiegth($prorealwiegth)
+    {
+        $this->prorealwiegth = $prorealwiegth;
+    }
+
+    /**
+     * @return float
+     */
+    public function getProvolume()
+    {
+        return $this->provolume;
+    }
+
+    /**
+     * @param float $provolume
+     */
+    public function setProvolume($provolume)
+    {
+        $this->provolume = $provolume;
+    }
+
+    /**
+     * @return float
+     */
+    public function getProweigth()
+    {
+        return $this->proweigth;
+    }
+
+    /**
+     * @param float $proweigth
+     */
+    public function setProweigth($proweigth)
+    {
+        $this->proweigth = $proweigth;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdMeshgeneral()
+    {
+        return $this->idMeshgeneral;
+    }
+
+    /**
+     * @param int $idMeshgeneral
+     */
+    public function setIdMeshgeneral($idMeshgeneral)
+    {
+        $this->idMeshgeneral = $idMeshgeneral;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return Studies
+     */
+    public function getIdStudy()
+    {
+        return $this->idStudy;
+    }
+
+    /**
+     * @param Studies $idStudy
+     */
+    public function setIdStudy($idStudy)
+    {
+        $this->idStudy = $idStudy;
+    }
+
+    /**
      * @var float
      *
      * @ORM\Column(name="proRealWiegth", type="float", precision=10, scale=0, nullable=true)

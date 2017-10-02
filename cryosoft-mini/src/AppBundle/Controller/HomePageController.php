@@ -24,16 +24,20 @@ class HomePageController extends Controller
      */
     public function indexAction (){
         $user = $this->getUser();
-        $userList= $this->getDoctrine()->getRepository(User::class);
-        $rs = $userList->findBy(array('id'=>$user->getId()));
-        $studyList = $this->getDoctrine()->getRepository(Studies::class);
-        $stuls = $studyList->findBy(array('idUser'=>$user->getId()));
-        $lang = $this->getDoctrine()->getRepository(Langauge::class)->findAll();
-        $money = $this->getDoctrine()->getRepository(Money::class)->findAll();
-        $language_list = array(
-            'en' => 'English',
-            'vn' => 'VietNamses'
-        );
+        if($user != null){
+            $userList= $this->getDoctrine()->getRepository(User::class);
+            $rs = $userList->findBy(array('id'=>$user->getId()));
+            $studyList = $this->getDoctrine()->getRepository(Studies::class);
+            $stuls = $studyList->findBy(array('idUser'=>$user->getId()));
+            $lang = $this->getDoctrine()->getRepository(Langauge::class)->findAll();
+            $money = $this->getDoctrine()->getRepository(Money::class)->findAll();
+            $language_list = array(
+                'en' => 'English',
+                'vn' => 'VietNamses'
+            );
+        }else{
+            return $this->render('authentication/home.html.twig');
+        }
 
         return $this->render('authentication/home.html.twig', [
             'username' => $rs[0]->getUsername(),
