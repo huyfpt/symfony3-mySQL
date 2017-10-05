@@ -1,0 +1,22 @@
+<html>
+<head>
+    <style>
+        ul li {list-style-type: none; float: left; margin: 10px;}
+        ul li a{padding: 10px; background-color: orange; color: #fff}
+        ul li a.active{background-color: #5eb5e0}
+    </style>
+</head>
+<body>
+<br>
+   <form id="form">
+       <li><a class="active" href="#">{{ 'translate.link1'|trans }}</a></li>
+       <li><a href="#">{{ 'translate.link2'|trans }}</a></li>
+       <li><a href="#">{{ 'translate.link3'|trans }}</a></li>
+
+       <select class="form-control" id="selectLang" name="lang">
+           <option value="1">En</option>
+           <option value="2">Fr</option>
+       </select></br/>
+       <button type="submit">ddddd</button>
+   </form>
+</ul> </body> </html>
