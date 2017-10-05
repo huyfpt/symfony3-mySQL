@@ -13,6 +13,7 @@ class ResgiterController extends Controller
      */
     public function registerAction(Request $request)
     {
+
         $session = $request->getSession();
 //         Create a new blank user and process the form
         $user = new User();

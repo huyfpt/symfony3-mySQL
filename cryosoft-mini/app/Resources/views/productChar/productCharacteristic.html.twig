@@ -25,19 +25,25 @@
         </div>
     </nav></br><br/></br>
     <h1>Study Name: <span id="name">{{ studyName}}</span> </h1>
-    <table border="1" width="1450px">
+    <table border="1" width="1450px" class="table">
         <thead>
         <tr>
-            <th style="text-align: center">Product</th>
+            <th style="text-align: center">Product Name</th>
+            <th id="SN" style="text-align: center; display: none " >Shape Name</th>
+            <th id="TN" style="text-align: center; display: none ">Thickness</th>
+            <th id="D" style="text-align: center; display: none ">Diameter</th>
+            <th id="L" style="text-align: center; display: none ">Length</th>
+            <th id="H" style="text-align: center; display: none ">Height</th>
+            <th id="W" style="text-align: center; display: none ">Width</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
+        <tbody id="trNew" name="trNew" >
+        <tr >
             <td style="text-align: center"><a href="#" data-toggle="modal" data-target="#newPro">New product</a></td>
         </tr>
         </tbody>
     </table>
-    <form action="#" method="post" onsubmit="return checkforblank()">
+    <form method="post" id="newProduct-form" >
          <div class="modal fade" id="newPro" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -55,11 +61,11 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <img src="../../img/plaque.jpg" id="img1"  style="display: none; " height="180" width="180">
+                                        <img src="../../img/plaque.jpg" id="img1" height="180" width="180">
                                         <img src="../../img/parall_dresse.jpg" id="img2" style="display: none" height="180" width="180">
                                         <img src="../../img/parall_couche.jpg" id="img3" style="display: none" height="180" width="180">
                                         <img src="../../img/cylindre_dresse.jpg" id="img4" style="display: none" height="180" width="180">
-                                        <img src="../../img/cylindre_couche.gif" id="img5" style="display: none" height="180" width="180">
+                                        <img src="../../img/cylindre_couche.jpg" id="img5" style="display: none" height="180" width="180">
                                         <img src="../../img/sphere.jpg" id="img6" style="display: none" height="180" width="180">
                                         <img src="../../img/cylindre_dresse_concentric.jpg" id="img7" style="display: none" height="180" width="180">
                                         <img src="../../img/cylindre_couche_concentric.jpg" id="img8" style="display: none" height="180" width="180">
@@ -68,12 +74,11 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Product Name</label>
-                                            <input class="form-control" type="text" name="productName">
+                                            <input class="form-control" type="text" id="productName"value="New product" name="_productName">
                                         </div>
                                         <div class="form-group">
                                             <label>Shape</label>
-                                            <select class="form-control" name="shape" id="shapeName" onchange="checkforblank()">
-                                                <option  value="Choose shape">Choose shape</option>
+                                            <select class="form-control" name="shape" id="shapeName" >
                                                 {% for shape in listShape %}
                                                     <option value="{{ shape.id }}"> {{ shape.name }}</option>
                                                 {% endfor %}
@@ -81,15 +86,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Dimension 1</label>
-                                            <input class="form-control" type="text" id="D1" name="_D1" disabled>
+                                            <input class="form-control"  id="D1"  min="0"  name="_D1" disabled>
                                         </div>
                                         <div class="form-group">
                                             <label>Dimension 2</label>
-                                            <input class="form-control" type="text" id="D2" name="_D2" disabled>
+                                            <input class="form-control"  id="D2" min="0"  name="_D2" disabled>
                                         </div>
                                         <div class="form-group">
                                             <label>Dimension 3</label>
-                                            <input class="form-control" type="text" id="D3" name="_D3" disabled>
+                                            <input class="form-control" id="D3" min="0"  name="_D3" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +110,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" id="changeInfo" class="btn btn-info">Confirm</button>
+                    <button type="button" id="createModiPro"  class="btn btn-info">Confirm</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -115,32 +120,22 @@
     <script>
         $('#shapeName').change(function() {
 //            alert($(this).val());
-            $('#D1').prop( "disabled", true ).val('');
-            $('#D2').prop( "disabled", true ).val('');
-            $('#D3').prop( "disabled", true ).val('');
+            $('#D1,#D2,#D3').prop( "disabled", true ).val('10.0');
             if( $(this).val() == 1) {
-                $('#D1').prop( "disabled", true ).val('NOTAPPLICABALE');
-                $('#D2').prop( "disabled", true ).val('NOTAPPLICABALE');
-                $('#D3').prop( "disabled", true ).val('NOTAPPLICABALE');
-
+                $('#D1,#D2,#D3').prop( "disabled", true ).val('Not Applicabale');
             }
-
             else if ($(this).val() == 2 || $(this).val() == 3 || $(this).val() == 9) {
-                $('#D1').prop( "disabled", false );
-                $('#D2').prop( "disabled", true ).val('NOTAPPLICABALE');
-                $('#D3').prop( "disabled", false );
+                $('#D1,#D3').prop( "disabled", false );
+                $('#D2').prop( "disabled", true ).val('Not Applicabale');
             }
 
             else if ($(this).val() == 4 || $(this).val() == 5 || $(this).val() == 7 || $(this).val() == 8) {
-                $('#D2').prop( "disabled", true ).val('NOTAPPLICABALE');
-                $('#D3').prop( "disabled", true ).val('NOTAPPLICABALE');
+                $('#D2,#D3').prop( "disabled", true ).val('Not Applicabale');
                 $('#D1').prop( "disabled", false );
             }
 
             else if ($(this).val() == 6) {
-                $('#D1').prop( "disabled", true ).val('NOTAPPLICABALE');
-                $('#D2').prop( "disabled", true ).val('NOTAPPLICABALE');
-                $('#D3').prop( "disabled", true ).val('NOTAPPLICABALE');
+                $('#D1,#D2,#D3').prop( "disabled", true ).val('Not Applicabale');
             }
 
         });
@@ -168,30 +163,84 @@
                     $('#img9').show();
                 }
         });
-        function checkforblank() {
+//dynamic add row table
+        $(document).ready(function(){
+            $("#createModiPro").click(function() {
+                var namePro = $("#productName").val();
+                var nameShape = $("#shapeName option:selected").text();
+                var Dim1 = $("#D1").val();
+                if($("#D2").val() === 'Not Applicabale'){
+                 var Dim2 = (0).toFixed(2);
+                }
+                var Dim3 = $("#D3").val();
+                var number1 = document.getElementById('D3').value;
+                var number = document.getElementById('D1').value;//retrieving the value
+                if (!isNaN(number) && !isNaN(number1)||  number && number1 === 'Not Applicabale' )
+                {
+                    if(namePro === null || namePro == "") {
+                        alert('Product name not null')
+                    }else {
+                        $('#TN, #SN, #L, #H, #W, #D').hide();
+                        if ($('#shapeName').val() == 1) {
+                            $('#SN, #TN').show();
+                            var markup = "<td><a href='#' data-toggle=\"modal\" data-target=\"#newPro\">" + namePro + "</a></td><td> " +
+                                nameShape + "</td><td>" + Dim2 + "</td>";
+                        } else if ($('#shapeName').val() == 2) {
+                            $('#SN,#L,#H,#W').show();
+                            var markup = "<td><a href='#' data-toggle=\"modal\" data-target=\"#newPro\">" + namePro + "</a></td><td> " +
+                                nameShape + "</td> <td>" + Dim1 + "</td> <td>" + Dim2 + "</td> <td>" + Dim3 + "</td>";
+                        } else if ($('#shapeName').val() == 3) {
+                            $('#SN,#L,#H,#W').show();
+                            var markup = "<td><a href='#' data-toggle=\"modal\" data-target=\"#newPro\">" + namePro + "</a></td><td> " +
+                                nameShape + "</td> <td>" + Dim1 + "</td> <td>" + Dim2 + "</td> <td>" + Dim3 + "</td>";
+                        } else if ($('#shapeName').val() == 4) {
+                            $('#SN,#D,#H').show();
+                            var markup = "<td><a href='#' data-toggle=\"modal\" data-target=\"#newPro\">" + namePro + "</a></td><td> " +
+                                nameShape + "</td> <td>" + Dim1 + "</td> <td>" + Dim2 + "</td> ";
+                        } else if ($('#shapeName').val() == 5) {
+                            $('#SN,#D,#L').show();
+                            var markup = "<td><a href='#' data-toggle=\"modal\" data-target=\"#newPro\">" + namePro + "</a></td><td> " +
+                                nameShape + "</td> <td>" + Dim1 + "</td> <td>" + Dim2 + "</td> ";
+                        } else if ($('#shapeName').val() == 6) {
+                            $('#SN,#D').show();
+                            var markup = "<td><a href='#' data-toggle=\"modal\" data-target=\"#newPro\">" + namePro + "</a></td><td> " +
+                                nameShape + "</td><td>" + Dim2 + "</td> ";
+                        } else if ($('#shapeName').val() == 7) {
+                            $('#SN,#D,#H').show();
+                            var markup = "<td><a href='#' data-toggle=\"modal\" data-target=\"#newPro\">" + namePro + "</a></td><td> " +
+                                nameShape + "</td><td>" + Dim2 + "</td> <td>" + Dim1 + "</td>  ";
+                        } else if ($('#shapeName').val() == 8) {
+                            $('#SN,#D,#L').show();
+                            var markup = "<td><a href='#' data-toggle=\"modal\" data-target=\"#newPro\">" + namePro + "</a></td><td> " +
+                                nameShape + "</td> <td>" + Dim2 + "</td> <td>" + Dim1 + "</td> ";
+                        } else if ($('#shapeName').val() == 9) {
+                            $('#SN,#L,#H,#W').show();
+                            var markup = "<td><a href='#' data-toggle=\"modal\" data-target=\"#newPro\">" + namePro + "</a></td><td> " +
+                                nameShape + "</td> <td>" + Dim1 + "</td> <td>" + Dim2 + "</td> <td>" + Dim3 + "</td>";
+                        }
 
-            var location = document.getElementById('shapeName');
-            var invalid = location.value == "Choose shape";
-
-            if (invalid) {
-                alert('Please choose shape');
-                location.className = 'error';
-            }
-            return !invalid;
-        }
+                        $('#newPro').modal('hide');
+                        var tb = document.getElementsByName('trNew')[0];
+                        tb.innerHTML = markup;
+                    }
+                } else if(isNaN(number) || isNaN(number1) ) {
+                    alert('Please enter a valid number');
+                }
+            });
+        });
     </script>
-    <style>
-        .error {border: 1px red solid; display: block;
-            width: 100%;
-            padding: .5rem .75rem;
-            font-size: 1rem;
-            line-height: 1.25;
-            color: #464a4c;
-            background-color: #fff;
-            background-image: none;
-            -webkit-background-clip: padding-box;
-            background-clip: padding-box;
-            /*border: 1px solid rgba(0,0,0,.15);*/
-            border-radius: .25rem;}
-    </style>
+    {#<style>#}
+        {#.error {border: 1px red solid; display: block;#}
+            {#width: 100%;#}
+            {#padding: .5rem .75rem;#}
+            {#font-size: 1rem;#}
+            {#line-height: 1.25;#}
+            {#color: #464a4c;#}
+            {#background-color: #fff;#}
+            {#background-image: none;#}
+            {#-webkit-background-clip: padding-box;#}
+            {#background-clip: padding-box;#}
+            {#/*border: 1px solid rgba(0,0,0,.15);*/#}
+            {#border-radius: .25rem;}#}
+    {#</style>#}
 {% endblock %}

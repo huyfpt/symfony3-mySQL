@@ -23,6 +23,9 @@ class UpdateInfoController extends Controller
      */
     public function updateAction(Request $request){
         $user = $this->getUser();
+        if($user == null){
+            return $this->redirectToRoute('login');
+        }
         $userList= $this->getDoctrine()->getRepository(User::class);
         $rs = $userList->findBy(array('id'=>$user->getId()));
 

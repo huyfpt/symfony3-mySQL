@@ -11,6 +11,10 @@ class SecurityController extends Controller
      */
     public function loginAction(Request $request)
     {
+        $user = $this->getUser();
+        if($user != null){
+            return $this->redirectToRoute('wellcome');
+        }
         $helper = $this->get('security.authentication_utils');
         return $this->render(
             'authentication/login.html.twig',

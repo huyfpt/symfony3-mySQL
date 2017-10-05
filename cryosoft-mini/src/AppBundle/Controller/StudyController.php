@@ -21,6 +21,9 @@ class StudyController extends Controller
     public function createAction(Request $request){
         $study = new Studies();
         $user = $this->getUser();
+        if($user == null){
+            return $this->redirectToRoute('login');
+        }
         if($request->getMethod()== 'POST'){
             $name = $request->get('studyName');
             $comment= $request->get('comment');
@@ -51,6 +54,9 @@ class StudyController extends Controller
      */
     public function loadAction(Request $request){
         $user = $this->getUser();
+        if($user == null){
+            return $this->redirectToRoute('login');
+        }
         $studyList = $this->getDoctrine()->getRepository(Studies::class);
         $stuls = $studyList->findBy(array('idUser'=>$user->getId()));
         if($request->getMethod() == 'POST'){
@@ -58,12 +64,12 @@ class StudyController extends Controller
             $studyListID = $this->getDoctrine()->getRepository(Studies::class);
             $stu_ls_id = $studyListID->findBy(array('id'=>$studyId));
             $ret =[
-                'comment' => $stu_ls_id[0]->getCmment(),
-                'cal' =>$stu_ls_id[0]->getCalculatemode(),
-                'economic' =>$stu_ls_id[0]->getOpeconomic(),
-                'cryogen' =>$stu_ls_id[0]->getOpcryogen(),
-                'perform' =>$stu_ls_id[0]->getOpperform(),
-                'hasChild' =>$stu_ls_id[0]->getOpallow(),
+                'comment' => count($stu_ls_id) ? $stu_ls_id[0]->getCmment() : null,
+                'cal' => count($stu_ls_id) ? $stu_ls_id[0]->getCalculatemode() : null ,
+                'economic' =>count($stu_ls_id) ? $stu_ls_id[0]->getOpeconomic() : null,
+                'cryogen' =>count($stu_ls_id) ? $stu_ls_id[0]->getOpcryogen() : null,
+                'perform' =>count($stu_ls_id) ? $stu_ls_id[0]->getOpperform() : null,
+                'hasChild' =>count($stu_ls_id) ? $stu_ls_id[0]->getOpallow() : null,
                 'productid'=>$studyId,
                 'updateid'=>$studyId
             ];
@@ -77,6 +83,10 @@ class StudyController extends Controller
      * @Route("/save", name="save-study")
      */
     public function saveAction(Request $request){
+        $user = $this->getUser();
+        if($user == null){
+            return $this->redirectToRoute('login');
+        }
         $em = $this->getDoctrine()->getManager();
 
         if ($request->getMethod() == 'POST') {
@@ -104,7 +114,10 @@ class StudyController extends Controller
      * @Route("/delete", name="delete-study")
      */
     public function deleteAction(Request $request){
-
+        $user = $this->getUser();
+        if($user == null){
+            return $this->redirectToRoute('login');
+        }
         $em = $this->getDoctrine()->getManager();
         if ($request->getMethod() == 'POST') {
             $studyId = $request->get('stuID');
@@ -126,6 +139,9 @@ class StudyController extends Controller
     public function saveAsAction(Request $request){
         $study = new Studies();
         $user = $this->getUser();
+        if($user == null){
+            return $this->redirectToRoute('login');
+        }
         if($request->getMethod()== 'POST'){
             $name = $request->get('newStu');
 //            $comment= $request->get('comment');
@@ -145,6 +161,7 @@ class StudyController extends Controller
             $study->setOpcryogen($cryogen);
             $study->setOpperform($perform);
             $study->setOpallow($haschild);
+
             $em->persist($study);
             $em->flush();
             return $this->redirectToRoute('load-study');

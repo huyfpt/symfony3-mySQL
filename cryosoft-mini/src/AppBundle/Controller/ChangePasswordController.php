@@ -14,7 +14,10 @@ class ChangePasswordController extends Controller
      */
     public function changepass(Request $request){
         $session = $request->getSession();
-
+        $user = $this->getUser();
+        if($user == null){
+            return $this->redirectToRoute('login');
+        }
         if($request->getMethod() == 'POST') {
             $oldpassword = $request->get('_oldPass');
             $newpassword = $request->get('_newPass');
