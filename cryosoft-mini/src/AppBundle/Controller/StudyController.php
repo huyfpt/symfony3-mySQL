@@ -21,6 +21,7 @@ class StudyController extends Controller
     public function createAction(Request $request){
         $study = new Studies();
         $user = $this->getUser();
+        $session = $request->getSession();
         if($user == null){
             return $this->redirectToRoute('login');
         }
@@ -34,6 +35,9 @@ class StudyController extends Controller
             $haschild=$request->get('hasChild');
             $now = new\DateTime('now');
             $result = $now->format('Y-m-d H:i:s');
+            if($name == null || $name == ""){
+                $session->getFlashBag()->set('error', "fff");
+            }
             $em = $this->getDoctrine()->getManager();
             $study->setIdUser($user);
             $study->setName($name);
@@ -122,13 +126,9 @@ class StudyController extends Controller
         if ($request->getMethod() == 'POST') {
             $studyId = $request->get('stuID');
             $del = $em->getRepository(Studies::class)->find($studyId);
-            if($studyId != null){
                 $em->remove($del);
                 $em->flush();
                 return $this->redirectToRoute('load-study');
-            }else{
-                die("dddd");
-            }
         }
         return $this->render('study/open.html.twig');
     }
